@@ -1,0 +1,373 @@
+/* src/app/app.component.css */
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: flex;
+}
+
+.todo-container h1 {
+  
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.todo-container input,
+.todo-container button {
+  font-size: 1rem;
+}
+
+.tooltip-trigger {
+  position: relative;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120px/2) to center the tooltip */
+  
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-trigger:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.todo-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border: 5px solid #e0e0e0;
+  background: linear-gradient(to right, #ffffff, #efefef);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start; 
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.action-button,
+.icon-button {
+  padding: 5px 10px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.clear-all-button {
+  margin-left: auto;
+}
+
+.actions button i {
+  margin-right: 5px;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li.completed {
+  background-color: #e6ffe6; 
+}
+
+li.completed span {
+  /* text-decoration: line-through;  */
+  /* font-weight: bold; */
+  color: rgb(47, 142, 13);
+}
+
+li.completed span.task-title {
+  text-decoration: line-through;
+  color: rgb(47, 142, 13); /*Optional: Change color for completed tasks */
+}
+
+
+li.postponed {
+  color: #bbb; /* Style for postponed items */
+}
+
+.todo-actions {
+  display: flex;
+  gap: 10px; /* This adds space between your buttons */
+}
+
+/* buttons */
+/* CSS code related to buttons */
+.input-container {
+  margin-bottom: 10px; /* Adjust the value as needed */
+}
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.btn {
+  position: relative;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.btn-outline-success {
+  color: #3ac47d;
+  border-color: #3ac47d;
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #3ac47d;
+  border-color: #3ac47d;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+
+}
+
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border: 2px solid #dc3545;
+}
+
+/* postpone */
+.btn.btn-outline-info {
+  /* Button styles for the 'btn' and 'btn-outline-info' classes */
+  /* Add your custom styles here */
+  background-color: white;
+  color: orange;
+}
+
+.btn.btn-outline-info:hover {
+  background-color: orange;
+  color: white;
+  border: 2px solid orange;
+}
+
+.btn.clear-completed {
+  /* Button styles for the 'btn', 'btn-outline-danger', and 'clear-completed' classes */
+  /* Add your custom styles here */
+  background-color: white;
+  color: blue;
+}
+
+.btn.clear-completed:hover {
+  background-color: blue;
+  color: white;
+  border: 2px solid blue;
+}
+
+.btn.btn-outline-primary:hover {
+  background-color: purple;
+  color: white;
+  border: 2px solid purple;
+}
+
+.btn.btn-outline-primary {
+  background-color: white;
+  color: purple;
+}
+
+.btn.btn-outline-success.toggle-complete {
+  /* Button styles for the 'btn', 'btn-outline-success', and 'toggle-complete' classes */
+  background-color: white;
+  color: green;
+}
+
+.btn.btn-outline-success.toggle-complete:hover {
+  background-color: green;
+  color: white;
+  border: 2px solid green;
+}
+.editing-container {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.editing-container input,
+.editing-container button {
+  background-color: rgb(210, 204, 204);
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.editing-container input:focus {
+  outline: none;
+}
+
+.editing-container button:hover {
+  background-color: #333;
+  color: rgb(210, 204, 204);
+}
+
+/* CSS code related to the todo container */
+.container {
+  margin: 20px;
+}
+
+/* CSS code related to the todo list */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.todo-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.bg-warning {
+  background-color: #ffc107;
+}
+
+.bg-focus {
+  background-color: #00c9ff;
+}
+
+.bg-primary {
+  background-color: #007bff;
+}
+
+.bg-info {
+  background-color: #17a2b8;
+}
+
+.bg-success {
+  background-color: #28a745;
+}
+
+.widget-content {
+  padding: 0;
+}
+
+.widget-heading {
+  font-weight: bold;
+}
+
+.widget-subheading {
+  color: #888;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.4rem;
+  margin-left: 5px;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.badge-info {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+/* CSS code related to the todo actions */
+.widget-content-right {
+  margin-left: auto;
+}
+
+.widget-content-right button {
+  margin-right: 5px;
+}
+/* last */
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+.icon-button:last-child {
+  margin-right: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+}
+
+.clear-all-action {
+  margin-left: auto; /* Push the button to the right */
+}
+
+button {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+button:hover,
+button:focus {
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  border-color: #cccccc;
+}
+
+button:active {
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+.todo-actions i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.todo-actions i:hover {
+  color: #007bff;
+}
+ 
+button[disabled] {
+  opacity: 0.5; /* Or any other visual cue */
+  cursor: not-allowed;
+}

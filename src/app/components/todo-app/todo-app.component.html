@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List todo app</title>
+</head>
+<body>
+  <div class="todo-container">
+    <h1>Todo List Application</h1>
+    <div class="input-container">
+    <input [(ngModel)]="newTodoTitle" (keyup.enter)="addTodo()" placeholder="New Task ......" autofocus>
+  </div>
+    <div class="actions">
+      <button (click)="clearCompleted()" aria-label="Clear completed todos" title="Clear completed todos" class="btn" class="btn clear-completed">
+        <i class="fas fa-broom"></i>
+      </button>
+      <button (click)="restorePostponed()" aria-label="Restore postponed todos" title="Restore postponed todos" class="btn" class="btn btn-outline-info">
+        <i class="fas fa-history"></i>
+      </button>
+      <button (click)="clearAll()" aria-label="Clear all todos" title="Clear all todos" class="btn" class="btn btn-outline-danger">
+        <i class="fas fa-trash"></i>
+      </button>
+      
+    </div>
+    <ul>
+      <li *ngFor="let todo of todos" [ngClass]="{'completed': todo.completed}">
+        <span *ngIf="!todo.editing">{{ todo.title }}</span>
+        <div class="todo-actions" *ngIf="!todo.editing">
+          <!-- These buttons should only show when not editing -->
+          <button (click)="editTodo(todo)" aria-label="Edit todo" title="Edit task" class="btn" class="btn btn-outline-primary">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button (click)="postponeTodo(todo)" aria-label="Postpone todo" title="Postpone" class="btn" class="btn btn-outline-info">
+            <i class="fas fa-pause"></i>
+          </button>
+          <button (click)="deleteTodo(todo)" aria-label="Delete todo" title="Remove" class="btn" class="btn btn-outline-danger">
+            <i class="fas fa-eraser"></i>
+          </button>
+          <button (click)="toggleComplete(todo)" aria-label="Toggle complete" title="Completed" class="btn" class="btn btn-outline-success">
+            <i class="fas fa-check"></i>
+          </button>
+        </div><!-- This will only show when editing is true -->
+        <div *ngIf="todo.editing" class="editing-container">
+          <input [(ngModel)]="todo.title" (keyup.enter)="updateTodoTitle(todo, todo.title)" />
+          <button (click)="updateTodoTitle(todo, todo.title)" class="btn button-gray-style">Update</button>
+          <button (click)="cancelEditing(todo)" class="btn button-gray-style">Cancel</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
+
